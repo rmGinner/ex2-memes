@@ -1,0 +1,47 @@
+@startuml
+interface SpaceObject{}
+
+interface SpaceGreatLight {
+    getDegreeStartShow():integer
+    getHoursStartShow() : integer
+}
+class Moon{
+  - degreesStartShow:integer
+  - hoursStartShow:integer
+  + getDegreeStartShow():integer
+  + getHoursStartShow() : integer
+}
+class Sun{
+  - degreesStartShow:integer
+  - hoursStartShow:integer
+  + getDegreeStartShow():integer
+  + getHoursStartShow() : integer
+}
+
+class Earth {
+  - moon : Moon
+  - sun : Sun
+  - totalOfSecondsInDay: integer
+  - secondsPerDegree: integer
+
+  - isMorning(): bool
+  - isAfternoon(): bool
+  - isNight(): bool
+  - isEarlyMorning(): bool
+  + getTimeFromDegrees(): String
+}
+
+class Program{
+  + {static} main():void
+}
+
+SpaceObject     <|.. SpaceGreatLight
+SpaceGreatLight <|.. Moon 
+SpaceGreatLight <|.. Sun 
+SpaceObject     <|.. Earth
+Program         o--  Earth
+Earth         o--  Moon
+Earth         o--  Sun
+
+
+@enduml
